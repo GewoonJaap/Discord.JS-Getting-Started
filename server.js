@@ -64,6 +64,13 @@ bot.on("message", async message => {
     message.channel.send(botembed) //Send to channel where message is sent.
 
   }
+    if (command === "clean") {
+    message.channel.fetchMessages({ limit: 100 }).then(msg => {
+      for (let i = 0; i < msg.array().length; i++) {
+        msg.array()[i].delete();
+      }
+    });
+  }
 
 
 })
